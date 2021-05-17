@@ -1,0 +1,294 @@
+/* CSS Default */
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: robot, Helvetica, sans-serif;
+  background-color: white;
+  font-size: 18px;
+  min-height: 2000px;
+}
+
+@font-face {
+  font-family: robot;
+  src: url(font/Roboto-Regular.ttf);
+}
+
+/* Header */
+.hero {
+  display: grid;
+  color: aliceblue;
+  padding-right: 100px;
+  min-height: 500px;
+  background-image: url(img/1.jpg);
+  filter: brightness(60%);
+  background-position-y: -350px;
+  background-attachment: fixed;
+  justify-content: end;
+  align-content: center;
+  font-size: 50px;
+  overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  margin: 30px;
+}
+
+.navbar ul {
+  display: grid;
+  list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  justify-content: space-around;
+  gap: 5px;
+  opacity: 0.7;
+}
+
+.navbar a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  background-color: #228b22;
+}
+
+/* Membuat Tombol */
+.toggle {
+  display: none;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.toggle span {
+  width: 28px;
+  height: 3px;
+  background-color: #228b22;
+  border-radius: 25%;
+  transition: all 0.5s;
+  opacity: 0.7;
+}
+
+.toggle input {
+  position: absolute;
+  width: 42px;
+  height: 30px;
+  left: -8px;
+  top: -4px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Membuat Animasi Tombol */
+.toggle span:nth-child(2) {
+  transform-origin: 0 0;
+}
+
+.toggle span:nth-child(4) {
+  transform-origin: 0 100%;
+}
+
+.toggle input:checked ~ span:nth-child(2) {
+  background-color: white;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.toggle input:checked ~ span:nth-child(4) {
+  background-color: white;
+  transform: rotate(-45deg) translate(-1px, 0);
+}
+
+.toggle input:checked ~ span:nth-child(3) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* About */
+.about {
+  width: 70%;
+  margin: 70px auto;
+}
+
+.tittle-about {
+  margin-top: 100px;
+  text-align: center;
+  display: grid;
+}
+
+.tittle-about hr {
+  width: 200px;
+  margin: 10px auto;
+}
+
+.about .intro {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  gap: 40px;
+  text-align: left;
+  padding: 20px;
+}
+
+.intro p:first-child {
+  transform: translate(-100px, 0);
+  opacity: 0;
+}
+
+.intro p:last-child {
+  transform: translate(100px, 0);
+  opacity: 0;
+}
+
+.intro p.muncul {
+  transform: translate(0px, 0px);
+  opacity: 1;
+  transition: 2s;
+}
+
+/* Product */
+.product {
+  width: 80%;
+  margin: 200px auto;
+  min-height: 1000px;
+}
+
+.food {
+  margin-top: 30px;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  row-gap: 80px;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.food .menu {
+  max-width: 1000px;
+  height: 600px;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  text-shadow: 1px 1px 3px lightgray;
+}
+
+.food .menu:hover {
+  text-shadow: 1px 1px 3px grey;
+  cursor: pointer;
+}
+
+.menu span {
+  color: #228b22;
+  font-weight: bold;
+}
+
+.menu img {
+  box-shadow: 2px 2px 5px black;
+}
+
+.tittle-product {
+  margin-top: 100px;
+  text-align: center;
+  display: grid;
+}
+
+.tittle-product hr {
+  width: 200px;
+  margin: 10px auto;
+}
+
+/* Contact */
+.information {
+  padding: 100px;
+  background-color: #228b22;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 25px;
+  justify-items: center;
+  align-items: center;
+  letter-spacing: 2px;
+  opacity: 0.9;
+}
+
+.location .copyright {
+  font-size: 25px;
+  padding-top: 5px;
+}
+
+.media img {
+  padding-top: 10px;
+}
+
+.tittle-contact {
+  margin-top: 100px;
+  text-align: center;
+  display: grid;
+}
+
+.tittle-contact hr {
+  width: 200px;
+  margin: 10px auto;
+}
+
+/* Responsive Breakpoint */
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    justify-items: end;
+  }
+
+  .navbar ul {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+    flex-direction: column;
+    background-color: #228b22;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 1;
+    width: 100%;
+    transform: translateY(-100%);
+    transition: 0.7s;
+  }
+
+  .navbar ul.slide {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .toggle {
+    display: flex;
+  }
+  .about .intro {
+    grid-template-columns: 1fr;
+  }
+
+  .information {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    justify-items: start;
+    padding: 20px;
+  }
+  .about {
+    width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .food {
+    width: 300px;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
